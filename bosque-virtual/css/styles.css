@@ -796,3 +796,58 @@ input[type="range"] {
     padding: 6px 10px;
   }
 }
+
+/* ── Botón flotante música ── */
+#fab-music {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(27, 67, 50, 0.9);
+  border: 1px solid rgba(116, 198, 157, 0.3);
+  color: var(--verde-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5000;
+  transition: all 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+#fab-music:hover {
+  background: var(--verde-oscuro);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-color: var(--verde-claro);
+}
+
+#fab-music:active {
+  transform: scale(0.95);
+}
+
+#fab-music i {
+  font-size: 1.5rem;
+}
+
+#fab-music.pulse {
+  animation: pulseMusic 0.4s ease-in-out;
+}
+
+@keyframes pulseMusic {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
