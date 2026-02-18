@@ -71,7 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const usuario = document.getElementById("usuario").value;
-        const password = document.getElementById("password").value;
+        const mes = document.getElementById("mes").value;
+        const dia = document.getElementById("dia").value;
+        const password = mes + dia;
 
         // Animación de carga en el botón
         btnLogin.disabled = true;
