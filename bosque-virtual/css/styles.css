@@ -1,0 +1,798 @@
+/* ============================================================
+   styles.css – Sistema de diseño global
+   Bosque Virtual de los Dos
+   ============================================================ */
+
+/* ── Google Fonts: Cormorant Garamond (títulos elegantes) + Inter (cuerpo limpio) ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Phosphor Icons ── */
+/* Se carga vía <script> en cada HTML */
+
+/* ── Variables de color ── */
+:root {
+  --verde-oscuro: #1B4332;
+  --verde-medio: #2D6A4F;
+  --verde-claro: #74C69D;
+  --verde-suave: #95D5B2;
+  --beige: #D8F3DC;
+  --beige-claro: #f0faf2;
+  --beige-oscuro: #B7E4C7;
+  --dorado: #C9A84C;
+  --dorado-claro: #e8c96a;
+  --blanco: #FAFFF8;
+  --texto-oscuro: #1a2e22;
+  --texto-medio: #3d5a47;
+  --texto-suave: #6b8f78;
+  --sombra: rgba(27, 67, 50, 0.12);
+  --sombra-fuerte: rgba(27, 67, 50, 0.25);
+}
+
+/* ── Reset y base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  background-color: var(--beige-claro);
+  color: var(--texto-oscuro);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Tipografía: títulos con Cormorant Garamond */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  color: var(--texto-medio);
+}
+
+/* ── Phosphor Icons helper ── */
+ph-icon,
+[data-ph] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Botones ── */
+.btn-bosque {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--verde-oscuro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-bosque:hover {
+  background: var(--verde-medio);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--sombra-fuerte);
+}
+
+.btn-bosque:active {
+  transform: translateY(0);
+}
+
+.btn-bosque.btn-success {
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+}
+
+.btn-dorado {
+  background: var(--dorado);
+  color: var(--verde-oscuro);
+}
+
+.btn-dorado:hover {
+  background: var(--dorado-claro);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: white;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.8rem;
+}
+
+/* ── Cards ── */
+.card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid rgba(116, 198, 157, 0.15);
+  box-shadow: 0 2px 12px var(--sombra);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: rgba(27, 67, 50, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(116, 198, 157, 0.12);
+}
+
+.navbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--beige);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.01em;
+}
+
+.navbar-brand i {
+  color: var(--verde-claro);
+  font-size: 1.1rem;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.navbar-nav a {
+  color: rgba(149, 213, 178, 0.75);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active {
+  background: rgba(116, 198, 157, 0.15);
+  color: white;
+}
+
+.navbar-nav a i {
+  font-size: 0.95rem;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 35, 25, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: white;
+  border-radius: 20px;
+  padding: 36px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.92) translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+}
+
+.modal-overlay.visible .modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--beige-claro);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--texto-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.modal-close:hover {
+  background: var(--beige-oscuro);
+  color: var(--verde-oscuro);
+  transform: rotate(90deg);
+}
+
+/* Badges de tipo */
+.modal-tipo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.badge-brote {
+  background: #e8f8ee;
+  color: #2d6a4f;
+}
+
+.badge-joven {
+  background: #d0f0df;
+  color: #1b4332;
+}
+
+.badge-grande {
+  background: #74c69d;
+  color: #1b4332;
+}
+
+.badge-especial {
+  background: #fdf3d7;
+  color: #8a6a00;
+  border: 1px solid #e8c96a;
+}
+
+.modal-titulo {
+  font-size: 1.9rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.modal-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-meta i {
+  font-size: 0.9rem;
+  color: var(--verde-claro);
+}
+
+.modal-historia {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--texto-medio);
+  font-style: italic;
+  border-left: 2px solid var(--beige-oscuro);
+  padding-left: 16px;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--verde-oscuro);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 3000;
+  transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast i {
+  color: var(--verde-claro);
+}
+
+/* ── Formulario ── */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e0ede5;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  background: white;
+  color: var(--texto-oscuro);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(116, 198, 157, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+.form-group .slider-value {
+  display: inline-block;
+  background: var(--beige);
+  color: var(--verde-oscuro);
+  padding: 1px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--verde-claro);
+  cursor: pointer;
+  height: 4px;
+  margin-top: 6px;
+}
+
+/* ── Mensaje de error ── */
+.mensaje-error {
+  color: #c0392b;
+  font-size: 0.82rem;
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.mensaje-error.visible {
+  opacity: 1;
+}
+
+/* ── Animaciones ── */
+
+@keyframes leafFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0.8;
+  }
+
+  25% {
+    transform: translateY(25vh) rotate(80deg) translateX(25px);
+  }
+
+  50% {
+    transform: translateY(50vh) rotate(160deg) translateX(-15px);
+  }
+
+  75% {
+    transform: translateY(75vh) rotate(240deg) translateX(18px);
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(320deg) translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGold {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.6));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.9));
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-8px);
+  }
+
+  40% {
+    transform: translateX(8px);
+  }
+
+  60% {
+    transform: translateX(-6px);
+  }
+
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.shake {
+  animation: shake 0.45s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ── Árboles en el mapa ── */
+.arbol {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arbol:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 20;
+}
+
+/* Ícono del árbol: círculo con Phosphor icon */
+.arbol-icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s;
+}
+
+.arbol-icono i {
+  font-size: 1.4rem;
+}
+
+/* Colores por tipo */
+.tipo-brote .arbol-icono {
+  background: #e8f8ee;
+  color: #2d6a4f;
+  border: 2px solid #95D5B2;
+}
+
+.tipo-joven .arbol-icono {
+  background: #c8eedd;
+  color: #1b4332;
+  border: 2px solid #74C69D;
+}
+
+.tipo-grande .arbol-icono {
+  background: #2D6A4F;
+  color: #D8F3DC;
+  border: 2px solid #1B4332;
+}
+
+.tipo-especial .arbol-icono {
+  background: #fdf3d7;
+  color: #8a6a00;
+  border: 2px solid var(--dorado);
+  animation: pulseGold 2.5s ease-in-out infinite;
+}
+
+.arbol-label {
+  background: rgba(27, 67, 50, 0.88);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.arbol:hover .arbol-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.arbol.nuevo {
+  animation: scaleIn 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+}
+
+/* ── Barra de amor ── */
+.barra-amor {
+  height: 6px;
+  background: linear-gradient(90deg, var(--verde-claro) 0%, var(--dorado) 60%, #f4a261 100%);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.barra-amor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 150%;
+  }
+}
+
+/* ── Metas futuras ── */
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--beige-claro);
+  margin-bottom: 6px;
+  transition: all 0.25s ease;
+  border: 1.5px solid transparent;
+}
+
+.meta-item.completada {
+  background: #f0faf4;
+  border-color: rgba(116, 198, 157, 0.3);
+}
+
+.meta-item.completada .meta-texto {
+  text-decoration: line-through;
+  color: var(--texto-suave);
+}
+
+.meta-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--verde-claro);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.meta-texto {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--texto-oscuro);
+}
+
+.meta-eliminar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+.meta-eliminar:hover {
+  color: #e74c3c;
+}
+
+/* ── Divider decorativo ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--beige-oscuro), transparent);
+  margin: 24px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .navbar-nav a {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+
+  .modal-box {
+    padding: 24px 18px;
+  }
+
+  .arbol-icono {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arbol-icono i {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-nav a span {
+    display: none;
+  }
+
+  .navbar-nav a {
+    padding: 6px 10px;
+  }
+}
